@@ -81,9 +81,9 @@ Scenario Outline: Intersecting the caps of a closed cylinder
     |   | point            | direction        | count |
     | 1 | point(0, 3, 0)   | vector(0, -1, 0) | 2     |
     | 2 | point(0, 3, -2)  | vector(0, -1, 2) | 2     |
-    | 3 | point(0, 4, -2)  | vector(0, -1, 1) | 2     | # corner case
+    | 3 | point(0, 4, -2)  | vector(0, -1, 1) | 2     | 
     | 4 | point(0, 0, -2)  | vector(0, 1, 2)  | 2     |
-    | 5 | point(0, -1, -2) | vector(0, 1, 1)  | 2     | # corner case
+    | 5 | point(0, -1, -2) | vector(0, 1, 1)  | 2     | 
 
 Scenario Outline: The normal vector on a cylinder's end caps
   Given cyl ← cylinder()
