@@ -14,6 +14,12 @@ class Tuple:
         z = self.z + other.z
         w = self.w + other.w
         return Tuple(x, y, z, w)
+    
+    def isaPoint(self):
+        return self.w == 1.0
+
+    def isaVector(self):
+        return self.w == 0.0
 
 def static():
     return 'Tuple static function'
