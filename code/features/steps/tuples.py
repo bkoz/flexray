@@ -2,6 +2,7 @@ from behave import *
 from Tuple import Tuple
 from Point import Point
 from Vector import *
+import math
 
 @given('a ← tuple(4.3, -4.2, 3.1, 1.0)')
 def step_impl(context):
@@ -127,3 +128,39 @@ def step_impl(context):
 @then(u'magnitude(v) = 1')
 def step_impl(context):
     assert(magnitude(context.v) == 1)
+
+@given(u'v ← vector(0, 1, 0)')
+def step_impl(context):
+    context.v = Vector(0, 1, 0)
+
+@given(u'v ← vector(0, 0, 1)')
+def step_impl(context):
+    context.v = Vector(0, 0, 1)
+
+@given(u'v ← vector(1, 2, 3)')
+def step_impl(context):
+    context.v = Vector(1, 2, 3)
+@then(u'magnitude(v) = √14')
+def step_impl(context):
+    assert(magnitude(context.v) == math.sqrt(14))
+@then(u'normalize(v) = approximately vector(0.26726, 0.53452, 0.80178)')
+def step_impl(context):
+    assert(normalize(context.v) == Vector(0.2672612419124244, 0.5345224838248488, 0.8017837257372732))
+
+@given(u'v ← vector(-1, -2, -3)')
+def step_impl(context):
+    context.v = Vector(-1, -2, -3)
+
+@given(u'v ← vector(4, 0, 0)')
+def step_impl(context):
+    context.v = Vector(4, 0, 0)
+@then(u'normalize(v) = vector(1, 0, 0)')
+def step_impl(context):
+    assert(normalize(context.v) == Vector(1, 0, 0))
+
+@when(u'norm ← normalize(v)')
+def step_impl(context):
+    context.norm = normalize(context.v)
+@then(u'magnitude(norm) = 1')
+def step_impl(context):
+    assert(magnitude(context.norm) == 1)
