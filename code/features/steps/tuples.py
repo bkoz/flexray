@@ -1,6 +1,7 @@
 from behave import *
 from Tuple import Tuple
 from Point import Point
+from Vector import Vector
 
 @given('a ← tuple(4.3, -4.2, 3.1, 1.0)')
 def step_impl(context):
@@ -43,3 +44,10 @@ def step_impl(context):
 @then(u'p = tuple(4, -4, 3, 1)')
 def step_impl(context):
     assert(context.p == Tuple(4, -4, 3, 1))
+
+@given(u'v ← vector(4, -4, 3)')
+def step_impl(context):
+    context.v = Vector(4, -4, 3)
+@then(u'v = tuple(4, -4, 3, 0)')
+def step_impl(context):
+    assert(context.v == Tuple(4, -4, 3, 0))
