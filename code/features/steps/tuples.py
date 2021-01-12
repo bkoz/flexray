@@ -71,3 +71,33 @@ def step_impl(context):
 @then(u'p1 - p2 = vector(-2, -4, -6)')
 def step_impl(context):
     assert(context.p1 - context.p2 == Vector(-2, -4, -6))
+
+@given(u'p ← point(3, 2, 1)')
+def step_impl(context):
+    context.p = Point(3, 2, 1)
+@given(u'v ← vector(5, 6, 7)')
+def step_impl(context):
+    context.v = Vector(5, 6, 7)
+@then(u'p - v = point(-2, -4, -6)')
+def step_impl(context):
+    assert(context.p - context.v == Point(-2, -4, -6))
+
+@given(u'v1 ← vector(3, 2, 1)')
+def step_impl(context):
+    context.v1 = Vector(3, 2, 1)
+@given(u'v2 ← vector(5, 6, 7)')
+def step_impl(context):
+    context.v2 = Vector(5, 6, 7)
+@then(u'v1 - v2 = vector(-2, -4, -6)')
+def step_impl(context):
+    assert(context.v1 - context.v2 == Vector(-2, -4, -6))
+
+@given(u'zero ← vector(0, 0, 0)')
+def step_impl(context):
+    context.zero = Vector(0, 0, 0)
+@given(u'v ← vector(1, -2, 3)')
+def step_impl(context):
+    context.v = Vector(1, -2, 3)
+@then(u'zero - v = vector(-1, 2, -3)')
+def step_impl(context):
+    assert(context.zero - context.v == Vector(-1, 2, -3))
