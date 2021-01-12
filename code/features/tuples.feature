@@ -10,6 +10,7 @@ Scenario: A tuple with w=1.0 is a point
     And a is a point
     And a is not a vector
 
+@dev
 Scenario: A tuple with w=0 is a vector
   Given a ← tuple(4.3, -4.2, 3.1, 0.0)
   Then a.x = 4.3
