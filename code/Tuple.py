@@ -22,6 +22,13 @@ class Tuple:
         w = self.w - other.w
         return Tuple(x, y, z, w)
 
+    def __mul__(self, scalar):
+        x = self.x * scalar
+        y = self.y * scalar
+        z = self.z * scalar
+        w = self.w * scalar
+        return Tuple(x, y, z, w)
+
     def __neg__(self):
         return Tuple(-self.x, -self.y, -self.z, -self.w)
 

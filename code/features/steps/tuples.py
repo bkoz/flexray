@@ -108,3 +108,11 @@ def step_impl(context):
 @then(u'-a = tuple(-1, 2, -3, 4)')
 def step_impl(context):
     assert(-context.a == Tuple(-1, 2, -3, 4))
+
+@then(u'a * 3.5 = tuple(3.5, -7, 10.5, -14)')
+def step_impl(context):
+    assert(context.a * 3.5 == Tuple(3.5, -7, 10.5, -14))
+
+@then(u'a * 0.5 = tuple(0.5, -1, 1.5, -2)')
+def step_impl(context):
+    assert(context.a * 0.5 == Tuple(0.5, -1, 1.5, -2))
