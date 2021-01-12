@@ -80,6 +80,7 @@ Scenario: Dividing a tuple by a scalar
   Given a ← tuple(1, -2, 3, -4)
   Then a / 2 = tuple(0.5, -1, 1.5, -2)
 
+@dev
 Scenario: Computing the magnitude of vector(1, 0, 0)
   Given v ← vector(1, 0, 0)
   Then magnitude(v) = 1

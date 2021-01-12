@@ -1,7 +1,7 @@
 from behave import *
 from Tuple import Tuple
 from Point import Point
-from Vector import Vector
+from Vector import *
 
 @given('a ← tuple(4.3, -4.2, 3.1, 1.0)')
 def step_impl(context):
@@ -120,3 +120,10 @@ def step_impl(context):
 @then(u'a / 2 = tuple(0.5, -1, 1.5, -2)')
 def step_impl(context):
     assert(context.a / 2 == Tuple(0.5, -1, 1.5, -2))
+
+@given(u'v ← vector(1, 0, 0)')
+def step_impl(context):
+    context.v = Vector(1, 0, 0)
+@then(u'magnitude(v) = 1')
+def step_impl(context):
+    assert(magnitude(context.v) == 1)
