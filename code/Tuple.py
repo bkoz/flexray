@@ -22,6 +22,9 @@ class Tuple:
         w = self.w - other.w
         return Tuple(x, y, z, w)
 
+    def __neg__(self):
+        return Tuple(-self.x, -self.y, -self.z, -self.w)
+
     def __eq__(self, other):
         return((self.x == other.x) and (self.y == other.y) and (self.z == other.z) and (self.w == other.w))
     

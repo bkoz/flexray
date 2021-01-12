@@ -60,6 +60,7 @@ Scenario: Subtracting a vector from the zero vector
     And v ← vector(1, -2, 3)
   Then zero - v = vector(-1, 2, -3)
 
+@dev
 Scenario: Negating a tuple
   Given a ← tuple(1, -2, 3, -4)
   Then -a = tuple(-1, 2, -3, 4)

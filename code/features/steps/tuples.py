@@ -101,3 +101,10 @@ def step_impl(context):
 @then(u'zero - v = vector(-1, 2, -3)')
 def step_impl(context):
     assert(context.zero - context.v == Vector(-1, 2, -3))
+
+@given(u'a ← tuple(1, -2, 3, -4)')
+def step_impl(context):
+    context.a = Tuple(1, -2, 3, -4)
+@then(u'-a = tuple(-1, 2, -3, 4)')
+def step_impl(context):
+    assert(-context.a == Tuple(-1, 2, -3, 4))
