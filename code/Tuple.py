@@ -15,6 +15,13 @@ class Tuple:
         w = self.w + other.w
         return Tuple(x, y, z, w)
     
+    def __sub__(self, other):
+        x = self.x - other.x
+        y = self.y - other.y
+        z = self.z - other.z
+        w = self.w - other.w
+        return Tuple(x, y, z, w)
+
     def __eq__(self, other):
         return((self.x == other.x) and (self.y == other.y) and (self.z == other.z) and (self.w == other.w))
     

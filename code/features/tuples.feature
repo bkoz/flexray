@@ -36,6 +36,7 @@ Scenario: Adding two tuples
     And a2 ← tuple(-2, 3, 1, 0)
    Then a1 + a2 = tuple(1, 1, 6, 1)
 
+@dev
 Scenario: Subtracting two points
   Given p1 ← point(3, 2, 1)
     And p2 ← point(5, 6, 7)

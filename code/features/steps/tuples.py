@@ -61,3 +61,13 @@ def step_impl(context):
 @then(u'a1 + a2 = tuple(1, 1, 6, 1)')
 def step_impl(context):
     assert(context.a1 + context.a2 == Tuple(1, 1, 6, 1))
+
+@given(u'p1 ← point(3, 2, 1)')
+def step_impl(context):
+    context.p1 = Point(3, 2, 1)
+@given(u'p2 ← point(5, 6, 7)')
+def step_impl(context):
+    context.p2 = Point(5, 6, 7)
+@then(u'p1 - p2 = vector(-2, -4, -6)')
+def step_impl(context):
+    assert(context.p1 - context.p2 == Vector(-2, -4, -6))
