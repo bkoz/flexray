@@ -51,3 +51,13 @@ def step_impl(context):
 @then(u'v = tuple(4, -4, 3, 0)')
 def step_impl(context):
     assert(context.v == Tuple(4, -4, 3, 0))
+
+@given(u'a1 ← tuple(3, -2, 5, 1)')
+def step_impl(context):
+    context.a1 = Tuple(3, -2, 5, 1)
+@given(u'a2 ← tuple(-2, 3, 1, 0)')
+def step_impl(context):
+    context.a2 = Tuple(-2, 3, 1, 0)
+@then(u'a1 + a2 = tuple(1, 1, 6, 1)')
+def step_impl(context):
+    assert(context.a1 + context.a2 == Tuple(1, 1, 6, 1))

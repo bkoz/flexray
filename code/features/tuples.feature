@@ -30,6 +30,7 @@ Scenario: vector() creates tuples with w=0
   Given v ← vector(4, -4, 3)
   Then v = tuple(4, -4, 3, 0)
 
+@dev
 Scenario: Adding two tuples
   Given a1 ← tuple(3, -2, 5, 1)
     And a2 ← tuple(-2, 3, 1, 0)
