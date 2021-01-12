@@ -15,11 +15,12 @@ class Tuple:
         w = self.w + other.w
         return Tuple(x, y, z, w)
     
+    def __eq__(self, other):
+        return((self.x == other.x) and (self.y == other.y) and (self.z == other.z) and (self.w == other.w))
+    
     def isaPoint(self):
         return self.w == 1.0
 
     def isaVector(self):
         return self.w == 0.0
 
-def static():
-    return 'Tuple static function'
