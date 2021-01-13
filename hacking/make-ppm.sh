@@ -4,7 +4,7 @@
 #
 # File format
 #
-# Magic number (always P6)
+# Magic number (always P6 for binary?)
 # Width Height
 # Maximum pixel value (<256 implies 8-bits per channel)
 # Binary pixel data
