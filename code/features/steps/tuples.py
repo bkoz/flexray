@@ -164,3 +164,20 @@ def step_impl(context):
 @then(u'magnitude(norm) = 1')
 def step_impl(context):
     assert(magnitude(context.norm) == 1)
+
+@given(u'a ← vector(1, 2, 3)')
+def step_impl(context):
+    context.a = Vector(1, 2, 3)
+@given(u'b ← vector(2, 3, 4)')
+def step_impl(context):
+    context.b = Vector(2, 3, 4)
+@then(u'dot(a, b) = 20')
+def step_impl(context):
+    assert(dot(context.a, context.b) == 20)
+
+@then(u'cross(a, b) = vector(-1, 2, -1)')
+def step_impl(context):
+    assert(cross(context.a, context.b) == Vector(-1, 2, -1))
+@then(u'cross(b, a) = vector(1, -2, 1)')
+def step_impl(context):
+    assert(cross(context.b, context.a) == Vector(1, -2, 1))

@@ -122,11 +122,13 @@ Scenario: The magnitude of a normalized vector
   When norm ← normalize(v)
   Then magnitude(norm) = 1
 
+@dev
 Scenario: The dot product of two tuples
   Given a ← vector(1, 2, 3)
     And b ← vector(2, 3, 4)
   Then dot(a, b) = 20
 
+@dev
 Scenario: The cross product of two vectors
   Given a ← vector(1, 2, 3)
     And b ← vector(2, 3, 4)
