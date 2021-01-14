@@ -26,18 +26,20 @@ canvas = Canvas(width, height)
 
 # Set initial projectile position and direction.
 start = Point(0, 1, 0)
-
 initial_velocity = normalize(Vector(1, 1.8, 0)) * 7.5
 
 p = Projectile(start, initial_velocity)
 # Set environment gravity and wind vectors.
-e = Environment(Vector(0, -0.1, 0), Vector(-0.01, 0, 0))
+gravity = Vector(0, -0.1, 0)
+wind = Vector(-0.01, 0, 0)
+e = Environment(gravity, wind)
 
 step = 0
 pen = Color(1,1,1)
 while (p.position.y > 0):
     print("Step: {0}, Position: ({1}, {2})".format(step, p.position.x, p.position.y))
-    canvas.write_pixel(round(p.position.x), height - round(p.position.y), pen)
+    if (p.position.x > 0 and p.position.x < width) and (p.position.y > 0 and p.position.y < height):
+        canvas.write_pixel(round(p.position.x), height - round(p.position.y), pen)
     p = tick(e, p)
     step += 1
 
