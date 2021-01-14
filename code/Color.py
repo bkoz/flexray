@@ -36,10 +36,6 @@ class Color:
     def __neg__(self):
         return Color(-self.red, -self.green, -self.blue)
 
-    # Need to write a float-compare function for the equality test.
-    # floatEquality(a, b):
-    #     return abs(a - b) < EPSILON
-    # Perhaps create a RayMath.py module that contains the const EPSILON and functions.
     def __eq__(self, other):
         return float_eq(self.red, other.red) \
             and float_eq(self.green, other.green) \
