@@ -35,8 +35,8 @@ e = Environment(gravity, wind)
 pen = Color(1,0.5,0)
 while (p.position.y > 0):
     if (p.position.x > 0 and p.position.x < width) and (p.position.y > 0 and p.position.y < height):
-        x = round(p.position.x) - 1
-        y = height - round(p.position.y) - 1
+        x = round(p.position.x)
+        y = height - round(p.position.y)
         canvas.write_pixel(x, y, pen)
     p = tick(e, p)
 
