@@ -1,3 +1,4 @@
-EPSILON=0.000001
+from sys import float_info
+
 def float_eq(a, b):
-    return abs(a - b) < EPSILON
+    return abs(a - b) < float_info.epsilon
