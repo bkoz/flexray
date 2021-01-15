@@ -17,8 +17,6 @@ def tick(env, proj):
     velocity = proj.velocity + env.gravity + env.wind
     return Projectile(position, velocity)
 
-# def pos_to_pixel(width, height, x, y):
-
 # Canvas
 width = 900
 height = 550
