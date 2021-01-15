@@ -26,3 +26,20 @@ def step_impl(context):
 @then(u'M[3,2] = 15.5')
 def step_impl(context):
     assert(context.M[3][2] == 15.5)
+
+@given(u'the following 2x2 matrix M')
+def step_impl(context):
+    context.M = Matrix()
+    context.M.m = [ [-3, 5], [1, -2] ]
+@then(u'M[0,0] = -3')
+def step_impl(context):
+    assert(context.M[0][0] == -3)
+@then(u'M[0,1] = 5')
+def step_impl(context):
+    assert(context.M[0][1] == 5)
+@then(u'M[1,0] = 1')
+def step_impl(context):
+    assert(context.M[1][0] == 1)
+@then(u'M[1,1] = -2')
+def step_impl(context):
+    assert(context.M[1][1] == -2)

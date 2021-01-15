@@ -15,6 +15,7 @@ Scenario: Constructing and inspecting a 4x4 matrix
     And M[3,0] = 13.5
     And M[3,2] = 15.5
 
+@dev
 Scenario: A 2x2 matrix ought to be representable
   Given the following 2x2 matrix M:
     | -3 |  5 |
