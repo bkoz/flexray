@@ -20,13 +20,13 @@ def tick(env, proj):
 # def pos_to_pixel(width, height, x, y):
 
 # Canvas
-width = 512
-height = 512
+width = 900
+height = 550
 canvas = Canvas(width, height)
 
 # Set initial projectile position and direction.
 start = Point(0, 1, 0)
-initial_velocity = normalize(Vector(1, 1.8, 0)) * 7.5
+initial_velocity = normalize(Vector(1, 1.8, 0)) * 11.25
 
 p = Projectile(start, initial_velocity)
 # Set environment gravity and wind vectors.
@@ -34,13 +34,12 @@ gravity = Vector(0, -0.1, 0)
 wind = Vector(-0.01, 0, 0)
 e = Environment(gravity, wind)
 
-step = 0
-pen = Color(1,1,1)
+pen = Color(1,0.5,0)
 while (p.position.y > 0):
-    print("Step: {0}, Position: ({1}, {2})".format(step, p.position.x, p.position.y))
     if (p.position.x > 0 and p.position.x < width) and (p.position.y > 0 and p.position.y < height):
-        canvas.write_pixel(round(p.position.x), height - round(p.position.y), pen)
+        x = round(p.position.x) - 1
+        y = height - round(p.position.y) - 1
+        canvas.write_pixel(x, y, pen)
     p = tick(e, p)
-    step += 1
 
 canvas.canvas_to_ppm()

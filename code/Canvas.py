@@ -37,8 +37,8 @@ class Canvas:
         f.write('255\n')
 
         count = 0
-        for y in range(self.width):
-            for x in range(self.height):
+        for y in range(self.height):
+            for x in range(self.width):
                 if (count > 5):
                     f.write('\n')
                     count = 0
