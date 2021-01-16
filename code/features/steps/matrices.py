@@ -54,3 +54,16 @@ def step_impl(context):
 @then(u'M[2,2] = 1')
 def step_impl(context):
     assert(context.M[2][2] == 1)
+
+@given(u'the following matrix A')
+def step_impl(context):
+    context.A = Matrix()
+    context.A.m = [[1, 2, 3, 4], [5, 6, 7, 8], [9, 8, 7, 6], [5, 4, 3, 2]]
+@given(u'the following matrix B')
+def step_impl(context):
+    context.B = Matrix()
+    context.B.m = [[1, 2, 3, 4], [5, 6, 7, 8], [9, 8, 7, 6], [5, 4, 3, 2]]
+
+@then(u'A = B')
+def step_impl(context):
+    assert(context.A.m == context.B.m)

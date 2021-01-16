@@ -35,6 +35,7 @@ Scenario: A 3x3 matrix ought to be representable
     And M[1,1] = -2
     And M[2,2] = 1
 
+@dev
 Scenario: Matrix equality with identical matrices
   Given the following matrix A:
       | 1 | 2 | 3 | 4 |
