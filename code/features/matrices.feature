@@ -25,6 +25,7 @@ Scenario: A 2x2 matrix ought to be representable
     And M[1,0] = 1
     And M[1,1] = -2
 
+@dev
 Scenario: A 3x3 matrix ought to be representable
   Given the following 3x3 matrix M:
     | -3 |  5 |  0 |

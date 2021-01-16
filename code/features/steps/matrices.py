@@ -43,3 +43,14 @@ def step_impl(context):
 @then(u'M[1,1] = -2')
 def step_impl(context):
     assert(context.M[1][1] == -2)
+
+@given(u'the following 3x3 matrix M')
+def step_impl(context):
+    context.M = Matrix()
+    context.M.m = [ [-3, 5, 0], [1, -2, -7], [0, 1, 1] ]
+@then(u'N[0,0] = -3')
+def step_impl(context):
+    assert(context.N[0][0] == -3)
+@then(u'M[2,2] = 1')
+def step_impl(context):
+    assert(context.M[2][2] == 1)
