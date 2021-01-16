@@ -63,7 +63,14 @@ def step_impl(context):
 def step_impl(context):
     context.B = Matrix()
     context.B.m = [[1, 2, 3, 4], [5, 6, 7, 8], [9, 8, 7, 6], [5, 4, 3, 2]]
-
 @then(u'A = B')
 def step_impl(context):
     assert(context.A.m == context.B.m)
+
+@given(u'the following matrix C')
+def step_impl(context):
+    context.C = Matrix()
+    context.C.m = [[2, 3, 4, 5], [6, 7, 8, 9], [8, 7, 6, 5], [4, 3, 2, 1]]
+@then(u'A != C')
+def step_impl(context):
+    assert(context.A.m != context.C.m)
