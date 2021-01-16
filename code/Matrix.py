@@ -1,4 +1,4 @@
-from rayUtils import *
+import math
 
 class Matrix(list):
     def __init__(self):
@@ -13,6 +13,11 @@ class Matrix(list):
     def __getitem__(self, r):
         return self.m[r]
     
+    def __eq__(self, other):
+        return math.isclose(self.red, other.red) \
+            and math.isclose(self.green, other.green) \
+                and math.isclose(self.blue, other.blue)
+
 
 """     def __add__(self, other):
         r = self.red + other.red
@@ -40,11 +45,6 @@ class Matrix(list):
     
     def __neg__(self):
         return Color(-self.red, -self.green, -self.blue)
-
-    def __eq__(self, other):
-        return float_eq(self.red, other.red) \
-            and float_eq(self.green, other.green) \
-                and float_eq(self.blue, other.blue)
 
     def scale(self, scalar):
         r = self.red * scalar

@@ -1,4 +1,4 @@
-from rayUtils import *
+import math
 
 class Color:
     def __init__(self, r, g, b):
@@ -37,9 +37,9 @@ class Color:
         return Color(-self.red, -self.green, -self.blue)
 
     def __eq__(self, other):
-        return float_eq(self.red, other.red) \
-            and float_eq(self.green, other.green) \
-                and float_eq(self.blue, other.blue)
+        return math.isclose(self.red, other.red) \
+            and math.isclose(self.green, other.green) \
+                and math.isclose(self.blue, other.blue)
 
     def scale(self, scalar):
         r = self.red * scalar
