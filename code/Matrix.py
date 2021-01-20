@@ -14,40 +14,41 @@ class Matrix(list):
         return self.m[r]
     
     def __eq__(self, other):
-        return math.isclose(self.red, other.red) \
-            and math.isclose(self.green, other.green) \
-                and math.isclose(self.blue, other.blue)
-
+        r = []
+        for x in range(self.m.__len__()):
+            for y in range(self.m.__len__()):
+                r.append(math.isclose(self.m[x][y], other.m[x][y]))
+        return True in r and False not in r
 
 """     def __add__(self, other):
-        r = self.red + other.red
-        g = self.green + other.green
-        b = self.blue + other.blue
+        r = self.x + other.x
+        g = self.y + other.y
+        b = self.z + other.z
         return Color(r, g, b)
     
     def __sub__(self, other):
-        r = self.red - other.red
-        g = self.green - other.green
-        b = self.blue - other.blue
+        r = self.x - other.x
+        g = self.y - other.y
+        b = self.z - other.z
         return Color(r, g, b)
 
     def __mul__(self, c):
-        r = self.red * c.red
-        g = self.green * c.green
-        b = self.blue * c.blue
+        r = self.x * c.x
+        g = self.y * c.y
+        b = self.z * c.z
         return Color(r, g, b)
 
     def __truediv__(self, scalar):
-        r = self.red / scalar
-        g = self.green / scalar
-        b = self.blue / scalar
+        r = self.x / scalar
+        g = self.y / scalar
+        b = self.z / scalar
         return Color(r, g, b)
     
     def __neg__(self):
-        return Color(-self.red, -self.green, -self.blue)
+        return Color(-self.x, -self.y, -self.z)
 
     def scale(self, scalar):
-        r = self.red * scalar
-        g = self.green * scalar
-        b = self.blue * scalar
+        r = self.x * scalar
+        g = self.y * scalar
+        b = self.z * scalar
         return Color(r, g, b) """
