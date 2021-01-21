@@ -14,6 +14,7 @@ class Matrix(list):
         return self.m[r]
     
     def __eq__(self, other):
+        assert self.m.__len__() == other.m.__len__() == 4, 'Matrix dimensions !='
         r = []
         for x in range(self.m.__len__()):
             for y in range(self.m.__len__()):
@@ -21,9 +22,10 @@ class Matrix(list):
         return True in r and False not in r
 
     #
-    # Assuming x 4x4 Matrix
+    # Matrix rows and columns must be equal length.
     #
     def __mul__(self, other):
+        assert self.m.__len__() == other.m.__len__() == 4, 'Matrix dimensions are not compatible'
         r = Matrix()
         r.m=[[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0]]
         for row in range(self.m.__len__()):

@@ -9,6 +9,7 @@ Run `behave` feature scenarios that are tagged with `@dev`.
 $ cd code
 $ export PYTHONPATH=${PYTHONPATH}:`pwd`
 $ behave --tags=@dev --no-skipped
+$ behave --tags=@dev --no-skipped features/matrices.feature
 ```
 
 #### Notes
