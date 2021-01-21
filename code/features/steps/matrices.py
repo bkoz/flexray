@@ -74,3 +74,15 @@ def step_impl(context):
 @then(u'A != C')
 def step_impl(context):
     assert(context.A.m != context.C.m)
+
+@given(u'the following matrix D')
+def step_impl(context):
+    context.D = Matrix()
+    context.D.m = [[-2, 1, 2, 3], [3 ,2 , 1, -1], [4, 3, 6,  5], [1 ,2, 7, 8]]
+@given(u'the following matrix E')
+def step_impl(context):
+    context.E = Matrix()
+    context.E.m = [[20, 22, 50, 48], [44, 54, 114, 108], [40, 58, 110, 102], [16, 26, 46, 42]]
+@then(u'A * D = E')
+def step_impl(context):
+    assert(context.A * context.D == context.E)

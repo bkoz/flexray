@@ -20,6 +20,18 @@ class Matrix(list):
                 r.append(math.isclose(self.m[x][y], other.m[x][y]))
         return True in r and False not in r
 
+    #
+    # Assuming x 4x4 Matrix
+    #
+    def __mul__(self, other):
+        r = Matrix()
+        r.m=[[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0]]
+        for row in range(self.m.__len__()):
+            for col in range(self.m.__len__()):
+                r.m[row][col] += self.m[row][0] * other.m[0][col] + self.m[row][1] * other.m[1][col] \
+                     + self.m[row][2] * other.m[2][col] + self.m[row][3] * other.m[3][col]
+        return r
+    
 """     def __add__(self, other):
         r = self.x + other.x
         g = self.y + other.y
@@ -30,12 +42,6 @@ class Matrix(list):
         r = self.x - other.x
         g = self.y - other.y
         b = self.z - other.z
-        return Color(r, g, b)
-
-    def __mul__(self, c):
-        r = self.x * c.x
-        g = self.y * c.y
-        b = self.z * c.z
         return Color(r, g, b)
 
     def __truediv__(self, scalar):
