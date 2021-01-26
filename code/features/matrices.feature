@@ -27,13 +27,13 @@ Scenario: A 2x2 matrix ought to be representable
 
 @dev
 Scenario: A 3x3 matrix ought to be representable
-  Given the following 3x3 matrix M:
+  Given the following 3x3 matrix M3:
     | -3 |  5 |  0 |
     |  1 | -2 | -7 |
     |  0 |  1 |  1 |
-  Then M[0,0] = -3
-    And M[1,1] = -2
-    And M[2,2] = 1
+  Then M3[0,0] = -3
+    And M3[1,1] = -2
+    And M3[2,2] = 1
 
 @dev
 Scenario: Matrix equality with identical matrices
@@ -82,14 +82,15 @@ Scenario: Multiplying two matrices
       | 16|  26 |  46 |  42 |
   Then A * D = E
 
+@dev
 Scenario: A matrix multiplied by a tuple
-  Given the following matrix A:
+  Given the following matrix A1:
       | 1 | 2 | 3 | 4 |
       | 2 | 4 | 4 | 2 |
       | 8 | 6 | 4 | 1 |
       | 0 | 0 | 0 | 1 |
-    And b ← tuple(1, 2, 3, 1)
-  Then A * b = tuple(18, 24, 33, 1)
+    And b1 ← tuple(1, 2, 3, 1)
+  Then A1 * b1 = tuple(18, 24, 33, 1)
 
 Scenario: Multiplying a matrix by the identity matrix
   Given the following matrix A:
