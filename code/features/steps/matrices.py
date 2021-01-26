@@ -93,3 +93,57 @@ def step_impl(context):
 @then(u'A1 * b1 = tuple(18, 24, 33, 1)')
 def step_impl(context):
     assert((context.A1 * context.b1) == Tuple([18, 24, 33, 1]))
+
+@then(u'A * identity_matrix = A')
+def step_impl(context):
+    assert(context.A * Matrix.identity() == context.A)
+
+@given(u'a ← tuple(1, 2, 3, 4)')
+def step_impl(context):
+    context.a = Tuple((1, 2, 3, 4))
+@then(u'identity_matrix * a = a')
+def step_impl(context):
+    assert(Matrix.identity() * context.a == context.a)
+
+@then(u'transpose(A) is the following matrix')
+def step_impl(context):
+    assert(Matrix.transpose(Matrix([[0,9,3,0],[9,8,0,8],[1,8,5,3],[0,0,5,8]])) == Matrix([[0,9,1,0],[9,8,8,0],[3,0,5,5],[0,8,3,8]]))
+
+@given(u'A ← transpose(identity_matrix)')
+def step_impl(context):
+    context.A = Matrix.transpose(Matrix.identity())
+@then(u'A = identity_matrix')
+def step_impl(context):
+    assert(context.A == Matrix.identity())
+
+@given(u'the following 2x2 matrix A')
+def step_impl(context):
+    context.A = Matrix([[1,5],[-3,2]])
+@then(u'determinant(A) = 17')
+def step_impl(context):
+    assert(context.A.determinant() == 17)
+
+@given(u'the following 3x3 matrix A')
+def step_impl(context):
+    context.A = Matrix([[1, 5, 0], [-3, 2, 7], [0, 6, -3]])
+@then(u'submatrix(A, 0, 2) is the following 2x2 matrix')
+def step_impl(context):
+    assert(context.A.submatrix(0, 2) == Matrix([[-3, 2], [0, 6]]))
+
+@given(u'the following 4x4 matrix A')
+def step_impl(context):
+    context.A = Matrix([[-6, 1, 1, 6], [-8, 5, 8, 6], [-1, 0, 8, 2], [-7, 1, -1, 1]])
+@then(u'submatrix(A, 2, 1) is the following 3x3 matrix')
+def step_impl(context):
+    assert(context.A.submatrix(2, 1) == Matrix([[-6, 1, 6], [-8, 8, 6],[-7, -1, 1]]))
+
+@given(u'B ← submatrix(A, 1, 0)')
+def step_impl(context):
+    context.A = Matrix([[3, 5, 0], [2, -1, -7], [6, -1, 5]])
+    context.B = context.A.submatrix(1, 0)
+@then(u'determinant(B) = 25')
+def step_impl(context):
+    assert(math.isclose(context.B.determinant(), 25))
+@then(u'minor(A, 1, 0) = 25')
+def step_impl(context):
+    assert(math.isclose(context.A.minor(1, 0), 25))

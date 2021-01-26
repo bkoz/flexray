@@ -19,29 +19,19 @@ class Matrix(list):
     def __mul__(self, other):
         return Matrix(numpy.dot(self._, other._))
     
-"""     def __add__(self, other):
-        r = self.x + other.x
-        g = self.y + other.y
-        b = self.z + other.z
-        return Color(r, g, b)
+    @staticmethod
+    def identity():
+        return Matrix(numpy.identity(4))
     
-    def __sub__(self, other):
-        r = self.x - other.x
-        g = self.y - other.y
-        b = self.z - other.z
-        return Color(r, g, b)
-
-    def __truediv__(self, scalar):
-        r = self.x / scalar
-        g = self.y / scalar
-        b = self.z / scalar
-        return Color(r, g, b)
+    def transpose(self):
+        return Matrix(numpy.transpose(self._))
     
-    def __neg__(self):
-        return Color(-self.x, -self.y, -self.z)
+    def determinant(self):
+        return numpy.linalg.det(self._)
 
-    def scale(self, scalar):
-        r = self.x * scalar
-        g = self.y * scalar
-        b = self.z * scalar
-        return Color(r, g, b) """
+    def submatrix(self, row, col):
+        tmp = numpy.delete(self._, row, axis=0)
+        return Matrix(numpy.delete(tmp, col, axis=1))
+    
+    def minor(self, row, col):
+        return self.submatrix(row, col).determinant()

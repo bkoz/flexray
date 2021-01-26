@@ -92,6 +92,7 @@ Scenario: A matrix multiplied by a tuple
     And b1 ← tuple(1, 2, 3, 1)
   Then A1 * b1 = tuple(18, 24, 33, 1)
 
+@dev
 Scenario: Multiplying a matrix by the identity matrix
   Given the following matrix A:
     | 0 | 1 |  2 |  4 |
@@ -100,10 +101,12 @@ Scenario: Multiplying a matrix by the identity matrix
     | 4 | 8 | 16 | 32 |
   Then A * identity_matrix = A
 
+@dev
 Scenario: Multiplying the identity matrix by a tuple
   Given a ← tuple(1, 2, 3, 4)
   Then identity_matrix * a = a
 
+@dev
 Scenario: Transposing a matrix
   Given the following matrix A:
     | 0 | 9 | 3 | 0 |
@@ -116,16 +119,19 @@ Scenario: Transposing a matrix
     | 3 | 0 | 5 | 5 |
     | 0 | 8 | 3 | 8 |
 
+@dev
 Scenario: Transposing the identity matrix
   Given A ← transpose(identity_matrix)
   Then A = identity_matrix
 
+@dev
 Scenario: Calculating the determinant of a 2x2 matrix
   Given the following 2x2 matrix A:
     |  1 | 5 |
     | -3 | 2 |
   Then determinant(A) = 17
 
+@dev
 Scenario: A submatrix of a 3x3 matrix is a 2x2 matrix
   Given the following 3x3 matrix A:
     |  1 | 5 |  0 |
@@ -135,6 +141,7 @@ Scenario: A submatrix of a 3x3 matrix is a 2x2 matrix
     | -3 | 2 |
     |  0 | 6 |
 
+@dev
 Scenario: A submatrix of a 4x4 matrix is a 3x3 matrix
   Given the following 4x4 matrix A:
     | -6 |  1 |  1 |  6 |
@@ -146,6 +153,7 @@ Scenario: A submatrix of a 4x4 matrix is a 3x3 matrix
     | -8 |  8 | 6 |
     | -7 | -1 | 1 |
 
+@dev
 Scenario: Calculating a minor of a 3x3 matrix
   Given the following 3x3 matrix A:
       |  3 |  5 |  0 |
