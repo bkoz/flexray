@@ -35,3 +35,10 @@ class Matrix(list):
     
     def minor(self, row, col):
         return self.submatrix(row, col).determinant()
+    
+    def cofactor(self, row, col):
+        minor = self.minor(row, col)
+        if ((row + col) % 2):
+            minor = -minor
+        return minor
+        

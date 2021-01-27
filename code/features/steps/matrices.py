@@ -147,3 +147,56 @@ def step_impl(context):
 @then(u'minor(A, 1, 0) = 25')
 def step_impl(context):
     assert(math.isclose(context.A.minor(1, 0), 25))
+
+@given(u'the following 3x3 matrix A3')
+def step_impl(context):
+    context.A3 = Matrix([[3, 5, 0], [2, -1, -7], [6, -1, 5]])
+@then(u'minor(A3, 0, 0) = -12')
+def step_impl(context):
+    assert(math.isclose(context.A3.minor(0, 0), -12))
+@then(u'cofactor(A3, 0, 0) = -12')
+def step_impl(context):
+    assert(math.isclose(context.A3.cofactor(0, 0), -12))
+@then(u'minor(A3, 1, 0) = 25')
+def step_impl(context):
+    assert(math.isclose(context.A3.minor(1, 0), 25))
+@then(u'cofactor(A3, 1, 0) = -25')
+def step_impl(context):
+    assert(math.isclose(context.A3.cofactor(1, 0), -25))
+
+@given(u'the following 3x3 matrix A4')
+def step_impl(context):
+    context.A = Matrix([[1, 2, 6], [-5, 8, -4], [2, 6, 4]])
+@then(u'cofactor(A4, 0, 0) = 56')
+def step_impl(context):
+    assert(math.isclose(context.A.cofactor(0, 0), 56))
+@then(u'cofactor(A4, 0, 1) = 12')
+def step_impl(context):
+    assert(math.isclose(context.A.cofactor(0, 1), 12))
+@then(u'cofactor(A4, 0, 2) = -46')
+def step_impl(context):
+    assert(math.isclose(context.A.cofactor(0, 2), -46))
+@then(u'determinant(A4) = -196')
+def step_impl(context):
+    assert(math.isclose(context.A.determinant(), -196))
+
+@given(u'the following 4x4 matrix AD')
+def step_impl(context):
+    context.A = Matrix([[-2,-8,3,5],[-3,1,7,3],[1,2,-9,6],[-6,7,7,-9]])
+@then(u'cofactor(AD, 0, 0) = 690')
+def step_impl(context):
+    assert(math.isclose(context.A.cofactor(0, 0), 690))
+@then(u'cofactor(AD, 0, 1) = 447')
+def step_impl(context):
+    assert(math.isclose(context.A.cofactor(0, 1), 447))
+@then(u'cofactor(AD, 0, 2) = 210')
+def step_impl(context):
+    assert(math.isclose(context.A.cofactor(0, 2), 210))
+@then(u'cofactor(AD, 0, 3) = 51')
+def step_impl(context):
+    assert(math.isclose(context.A.cofactor(0, 3), 51))
+@then(u'determinant(AD) = -4071')
+def step_impl(context):
+    assert(math.isclose(context.A.determinant(), -4071))
+
+

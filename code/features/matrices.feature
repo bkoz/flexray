@@ -163,37 +163,40 @@ Scenario: Calculating a minor of a 3x3 matrix
   Then determinant(B) = 25
     And minor(A, 1, 0) = 25
 
+@dev
 Scenario: Calculating a cofactor of a 3x3 matrix
-  Given the following 3x3 matrix A:
+  Given the following 3x3 matrix A3:
       |  3 |  5 |  0 |
       |  2 | -1 | -7 |
       |  6 | -1 |  5 |
-  Then minor(A, 0, 0) = -12
-    And cofactor(A, 0, 0) = -12
-    And minor(A, 1, 0) = 25
-    And cofactor(A, 1, 0) = -25
+  Then minor(A3, 0, 0) = -12
+    And cofactor(A3, 0, 0) = -12
+    And minor(A3, 1, 0) = 25
+    And cofactor(A3, 1, 0) = -25
 
+@dev
 Scenario: Calculating the determinant of a 3x3 matrix
-  Given the following 3x3 matrix A:
+  Given the following 3x3 matrix A4:
     |  1 |  2 |  6 |
     | -5 |  8 | -4 |
     |  2 |  6 |  4 |
-  Then cofactor(A, 0, 0) = 56
-    And cofactor(A, 0, 1) = 12
-    And cofactor(A, 0, 2) = -46
-    And determinant(A) = -196
+  Then cofactor(A4, 0, 0) = 56
+    And cofactor(A4, 0, 1) = 12
+    And cofactor(A4, 0, 2) = -46
+    And determinant(A4) = -196
 
+@dev
 Scenario: Calculating the determinant of a 4x4 matrix
-  Given the following 4x4 matrix A:
+  Given the following 4x4 matrix AD:
     | -2 | -8 |  3 |  5 |
     | -3 |  1 |  7 |  3 |
     |  1 |  2 | -9 |  6 |
     | -6 |  7 |  7 | -9 |
-  Then cofactor(A, 0, 0) = 690
-    And cofactor(A, 0, 1) = 447
-    And cofactor(A, 0, 2) = 210
-    And cofactor(A, 0, 3) = 51
-    And determinant(A) = -4071
+  Then cofactor(AD, 0, 0) = 690
+    And cofactor(AD, 0, 1) = 447
+    And cofactor(AD, 0, 2) = 210
+    And cofactor(AD, 0, 3) = 51
+    And determinant(AD) = -4071
 
 Scenario: Testing an invertible matrix for invertibility
   Given the following 4x4 matrix A:
