@@ -100,10 +100,10 @@ def step_impl(context):
 
 @given(u'a ← tuple(1, 2, 3, 4)')
 def step_impl(context):
-    context.a = Tuple((1, 2, 3, 4))
+    context.a = Tuple([1, 2, 3, 4])
 @then(u'identity_matrix * a = a')
 def step_impl(context):
-    assert(Matrix.identity() * context.a == context.a)
+    assert((Matrix.identity() * context.a) == context.a)
 
 @then(u'transpose(A) is the following matrix')
 def step_impl(context):
@@ -199,4 +199,53 @@ def step_impl(context):
 def step_impl(context):
     assert(math.isclose(context.A.determinant(), -4071))
 
+@given(u'the following 4x4 matrix AI')
+def step_impl(context):
+    context.AI = Matrix([[6,4,4,4],[5,5,7,6],[4,-9,3,-7],[9,1,7,-6]])
+@then(u'determinant(AI) = -2120')
+def step_impl(context):
+    assert(math.isclose(context.AI.determinant(), -2120))
+@then(u'AI is invertible')
+def step_impl(context):
+    assert(context.AI.isInvertable() == True)
 
+@given(u'the following 4x4 matrix ANI')
+def step_impl(context):
+    context.ANI = Matrix([[-4,2,-2,-3],[9,6,2,6],[0,-5,1,-5],[0,0,0,0]])
+@then(u'determinant(ANI) = 0')
+def step_impl(context):
+    assert(math.isclose(context.ANI.determinant(), 0))
+@then(u'ANI is not invertible')
+def step_impl(context):
+    assert(context.ANI.isInvertable() == False)
+
+@given(u'the following 4x4 matrix AINV')
+def step_impl(context):
+    context.AINV = Matrix([[-5,2,6,-8],[1,-5,1,8],[7,7,-6,-7],[1,-3,7,4]])
+@given(u'BINV ← inverse(AINV)')
+def step_impl(context):
+    context.BINV = context.AINV.inverse()
+@then(u'determinant(AINV) = 532')
+def step_impl(context):
+    assert(math.isclose(context.AINV.determinant(), 532))
+@then(u'cofactor(AINV, 2, 3) = -160')
+def step_impl(context):
+    assert(math.isclose(context.AINV.cofactor(2, 3), -160))
+@then(u'BINV[3,2] = -160/532')
+def step_impl(context):
+    assert(math.isclose(context.BINV._[3][2], -160/532)) 
+    #raise NotImplementedError(u'STEP: Then BINV[3,2] = -160/532')
+@then(u'cofactor(AINV, 3, 2) = 105')
+def step_impl(context):
+    assert(math.isclose(context.AINV.cofactor(3, 2), 105))
+    #raise NotImplementedError(u'STEP: Then cofactor(AINV, 3, 2) = 105')
+@then(u'BINV[2,3] = 105/532')
+def step_impl(context):
+    assert(math.isclose(context.BINV._[2][3], 105/532)) 
+    #raise NotImplementedError(u'STEP: Then BINV[2,3] = 105/532')
+@then(u'BINV is the following 4x4 matrix')
+def step_impl(context):
+    assert(context.BINV == Matrix([[ 0.21805,  0.45113,  0.24060 , -0.04511],\
+        [-0.80827, -1.45677, -0.44361,  0.52068],\
+            [-0.07895, -0.22368, -0.05263,  0.19737],\
+                [-0.52256, -0.81391, -0.30075,  0.30639]]))

@@ -1,4 +1,5 @@
 import numpy
+import math
 
 class Tuple:
     def __init__(self, t):
@@ -23,9 +24,13 @@ class Tuple:
         return Tuple([self._[0] * -1, self._[1] * -1, self._[2] * -1, self._[3] * -1]) 
         
     def __eq__(self, other):
-        eq = self._ == other._
-        return True in eq and False not in eq
-    
+        # eq = self._ == other._
+        # return True in eq and False not in eq
+        l=[]
+        for i,j in zip(self._, other._):
+            l.append(math.isclose(i, j,rel_tol=1e-04))
+        return True in l and False not in l
+ 
     def isaPoint(self):
         return self._[3] == 1.0
 
