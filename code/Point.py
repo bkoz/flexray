@@ -1,12 +1,11 @@
-from Tuple import Tuple
-import numpy
+import numpy as np
 
-class Point(Tuple):
-    def __init__(self, tuple):
-        self._ = numpy.array([0.0, 0.0, 0.0, 1.0])
-        self._[0] = tuple[0]
-        self._[1] = tuple[1]
-        self._[2] = tuple[2]
+class Point(np.ndarray):
+    def __new__(cls, *args, **kwargs):
+        a = np.array(args)
+        a.resize(4)
+        a[3] = 1.0
+        return np.ndarray.__new__(cls, shape = (4), dtype = np.float, buffer = a.astype(np.float))
 
-    def __str__(self):
-        return "{0}".format(self._)
+    def __array_finalize__(self, obj):
+        pass
