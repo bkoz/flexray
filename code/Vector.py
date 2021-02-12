@@ -18,20 +18,14 @@ class Vector(np.ndarray):
         return True in l and False not in l
 
 def magnitude(v):
-    #assert v.isaVector(), "Input is not a Vector!"
     return math.sqrt(v[0] * v[0] + v[1] * v[1] + v[2] * v[2])
 
 def normalize(v):
-    #assert visaVector(), "Input is not a Vector!"
     m = magnitude(v)
     return Vector([v[0]/m, v[1]/m, v[2]/m])
 
 def dot(a, b):
-    #assert a.isaVector(), "Input is not a Vector!"
-    #assert b.isaVector(), "Input is not a Vector!"
     return a[0] * b[0] + a[1] * b[1] + a[2] * b[2] + a[3] * b[3]
 
 def cross(a, b):
-    #assert a.isaVector(), "Input is not a Vector!"
-    #assert b.isaVector(), "Input is not a Vector!"
     return Vector([a[1] * b[2] - a[2] * b[1], a[2] * b[0] - a[0] * b[2], a[0] * b[1] - a[1] * b[0]])

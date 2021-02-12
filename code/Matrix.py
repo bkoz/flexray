@@ -15,10 +15,7 @@ class Matrix(np.ndarray):
 
     def __array_finalize__(self, obj):
         pass
-
-    # def __str__(self):
-    #     return "print"
-                
+            
     #
     # Equality test
     #
