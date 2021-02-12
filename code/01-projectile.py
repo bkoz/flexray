@@ -17,12 +17,12 @@ def tick(env, proj):
     return Projectile(position, velocity)
 
 # Set initial projectile position and direction.
-p = Projectile(Point(0, 1, 0), normalize(Vector(1, 1, 0)))
+p = Projectile(Point([0, 1, 0]), normalize(Vector([1, 1, 0])))
 # Set environment gravity and wind vectors.
-e = Environment(Vector(0, -0.1, 0), Vector(-0.01, 0, 0))
+e = Environment(Vector([0, -0.1, 0]), Vector([-0.01, 0, 0]))
 
 step = 0
-while (p.position.y > 0):
-    print("Step: {0}, Position: ({1}, {2})".format(step, p.position.x, p.position.y))
+while (p.position[1] > 0):
+    print("Step: {0}, Position: ({1}, {2})".format(step, p.position[0], p.position[1]))
     p = tick(e, p)
     step += 1
