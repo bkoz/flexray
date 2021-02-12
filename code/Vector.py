@@ -1,32 +1,37 @@
-from Tuple import Tuple
 import math
-import numpy
+import numpy as np
 
-class Vector(Tuple):
-    def __init__(self, tuple):
-        self._ = numpy.array([0.0, 0.0, 0.0, 0.0])
-        self._[0] = tuple[0]
-        self._[1] = tuple[1]
-        self._[2] = tuple[2]
+class Vector(np.ndarray):
+    def __new__(cls, *args, **kwargs):
+        a = np.array(args)
+        a.resize(4)
+        a[3] = 0.0
+        return np.ndarray.__new__(cls, shape = (4), dtype = np.float, buffer = a.astype(np.float))
 
-    def __str__(self):
-        return "{0}".format(self._)
+    def __array_finalize__(self, obj):
+        pass
+
+    def __eq__(self, other):
+        l = []
+        for i in range(self.shape[0]):
+            l.append(self[i] == other[i])
+        return True in l and False not in l
 
 def magnitude(v):
-    assert v.isaVector(), "Input is not a Vector!"
-    return math.sqrt(v._[0] * v._[0] + v._[1] * v._[1] + v._[2] * v._[2])
+    #assert v.isaVector(), "Input is not a Vector!"
+    return math.sqrt(v[0] * v[0] + v[1] * v[1] + v[2] * v[2])
 
 def normalize(v):
-    assert v.isaVector(), "Input is not a Vector!"
+    #assert visaVector(), "Input is not a Vector!"
     m = magnitude(v)
-    return Vector([v._[0]/m, v._[1]/m, v._[2]/m])
+    return Vector([v[0]/m, v[1]/m, v[2]/m])
 
 def dot(a, b):
-    assert a.isaVector(), "Input is not a Vector!"
-    assert b.isaVector(), "Input is not a Vector!"
-    return a._[0] * b._[0] + a._[1] * b._[1] + a._[2] * b._[2] + a._[3] * b._[3]
+    #assert a.isaVector(), "Input is not a Vector!"
+    #assert b.isaVector(), "Input is not a Vector!"
+    return a[0] * b[0] + a[1] * b[1] + a[2] * b[2] + a[3] * b[3]
 
 def cross(a, b):
-    assert a.isaVector(), "Input is not a Vector!"
-    assert b.isaVector(), "Input is not a Vector!"
-    return Vector([a._[1] * b._[2] - a._[2] * b._[1], a._[2] * b._[0] - a._[0] * b._[2], a._[0] * b._[1] - a._[1] * b._[0]])
+    #assert a.isaVector(), "Input is not a Vector!"
+    #assert b.isaVector(), "Input is not a Vector!"
+    return Vector([a[1] * b[2] - a[2] * b[1], a[2] * b[0] - a[0] * b[2], a[0] * b[1] - a[1] * b[0]])

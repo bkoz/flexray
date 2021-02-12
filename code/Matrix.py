@@ -20,33 +20,24 @@ class Matrix(np.ndarray):
     #     return "print"
                 
     #
-    # Equality test for Matrix, Matrix or Tuple, Tuple floats.
-    # The numpy.array.ndim handles the special case when Tuples or Points are passed in.
+    # Equality test
     #
     def __eq__(self, other):
         l = []
-        # if (self._.ndim == 2):
-        #     for i,j in zip(self._, other._):
-        #         for a,b in zip(i,j):
-        #             l.append(math.isclose(a, b, rel_tol=1e-04))
-        #     ret = True in l and False not in l
-        # else:
-        #     for i,j in zip(self._, other._):
-        #         l.append(math.isclose(i, j,rel_tol=1e-04))
-        #     ret = True in l and False not in l   
-        # return ret
-        for r in range(self.shape[0]):
-            for c in range(self.shape[1]):
-                l.append(self[r][c] == other[r][c])
-        ret = True in l and False not in l
+        s = np.array(self)
+        o = np.array(other)
+        for i,j in zip(s.flatten(), o.flatten()):
+            l.append(math.isclose(i, j, rel_tol=1e-4))
+        ret = (True in l) and (False not in l)
         return ret
 
     def __ne__(self, other):
         l = []
-        for r in range(self.shape[0]):
-            for c in range(self.shape[1]):
-                l.append(self[r][c] == other[r][c])
-        ret = True not in l and False in l
+        s = np.array(self)
+        o = np.array(other)
+        for i,j in zip(s.flatten(), o.flatten()):
+            l.append(math.isclose(i, j, rel_tol=1e-4))
+        ret = (True not in l) and (False in l)
         return ret
 
     def __mul__(self, other):

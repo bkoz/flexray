@@ -9,6 +9,12 @@ class Tuple(np.ndarray):
     def __array_finalize__(self, obj):
         pass
 
+    def __eq__(self, other):
+        l = []
+        for i in range(self.shape[0]):
+            l.append(self[i] == other[i])
+        return True in l and False not in l
+
     def isaPoint(self):
         return self[3] == 1.0
 
