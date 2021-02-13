@@ -27,5 +27,6 @@ assert(T * p == Point([15, 0, 7]))
 print(T * p)
 
 Tf = Matrix.translation(10, 5, 7) * Matrix.scaling(5, 5, 5) * Matrix.rotation_x(math.pi/2)
+assert(Tf * p == Point([15, 0, 7]))
 
 print(Tf * p)
