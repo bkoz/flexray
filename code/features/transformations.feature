@@ -111,6 +111,7 @@ Scenario: A shearing transformation moves z in proportion to y
     And p ← point(2, 3, 4)
   Then transform * p = point(2, 3, 7)
 
+@dev
 Scenario: Individual transformations are applied in sequence
   Given p ← point(1, 0, 1)
     And A ← rotation_x(π / 2)

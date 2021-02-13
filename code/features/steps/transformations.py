@@ -157,3 +157,36 @@ def step_impl(context):
 @then(u'transform * p = point(2, 3, 7)')
 def step_impl(context):
     assert(context.t * context.p == Point([2, 3, 7]))
+
+@given(u'p ← point(1, 0, 1)')
+def step_impl(context):
+    context.p = Point([1, 0, 1])
+@given(u'A ← rotation_x(π / 2)')
+def step_impl(context):
+    context.A = Matrix.rotation_x(math.pi / 2)
+@given(u'B ← scaling(5, 5, 5)')
+def step_impl(context):
+    context.B = Matrix.scaling(5, 5, 5)
+@given(u'C ← translation(10, 5, 7)')
+def step_impl(context):
+    context.C = Matrix.translation(10, 5, 7)
+@when(u'p2 ← A * p')
+def step_impl(context):
+    context.p2 = context.A * context.p
+@then(u'p2 = point(1, -1, 0)')
+def step_impl(context):
+    assert(context.p2 == Point([1, -1, 0]))
+@when(u'p3 ← B * p2')
+def step_impl(context):
+    context.p3 = context.B * context.p2
+@then(u'p3 = point(5, -5, 0)')
+def step_impl(context):
+    assert(context.p3 == Point([5, -5, 0]))
+@when(u'p4 ← C * p3')
+def step_impl(context):
+    context.p4 = context.C * context.p3
+@then(u'p4 = point(15, 0, 7)')
+def step_impl(context):
+    assert(context.p4 == Point([15, 0, 7]))
+
+
