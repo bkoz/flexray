@@ -23,9 +23,9 @@ for i in range(12):
     R = Matrix.rotation_y(r)
     position = R * T * origin
     #
-    # World to device coordinates not right
-    # Need a transform for this.
-    # Should not have to clamp row and col values.
+    # Screen to canvas(raster) coordinates a hack.
+    #
+    # Translate, scale and clip to Canvas coords.
     #
     x = position[0] + 0.5
     z = position[2] + 0.5
