@@ -35,8 +35,8 @@ for i in range(12):
         col = 0
     canvas.write_pixel(row, col, pen)
 
-    #print(f'Angle = {r}, x = {position[0]}, z = {position[2]}')
-    print(f'row = {row}, col = {col}')
+    print(f'Angle = {r}, x = {position[0]}, z = {position[2]}')
+    #print(f'row = {row}, col = {col}')
     r += deltaR
 
 

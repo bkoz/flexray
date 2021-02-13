@@ -23,16 +23,16 @@ height = 550
 canvas = Canvas(width, height)
 
 # Set initial projectile position and direction.
-start = Point(0, 1, 0)
-initial_velocity = normalize(Vector(1, 1.8, 0)) * 11.25
+start = Point([0, 1, 0])
+initial_velocity = normalize(Vector([1, 1.8, 0])) * 11.25
 
 p = Projectile(start, initial_velocity)
 # Set environment gravity and wind vectors.
-gravity = Vector(0, -0.1, 0)
-wind = Vector(-0.01, 0, 0)
+gravity = Vector([0, -0.1, 0])
+wind = Vector([-0.01, 0, 0])
 e = Environment(gravity, wind)
 
-pen = Color(1,0.5,0)
+pen = Color(1, 0.5, 0)
 while (p.position[1] > 0):
     if (p.position[0] > 0 and p.position[0] < width) and (p.position[1] > 0 and p.position[1] < height):
         x = round(p.position[0])
