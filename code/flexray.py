@@ -1,6 +1,6 @@
 # flexray.py
 #
-# Fluent API-style transform chaining.
+# Transform testing.
 #
 from Matrix import *
 from Point import *
