@@ -14,6 +14,10 @@ radius = 0.5
 canvas = Canvas(width, height)
 pen = Color(1, 1 ,1)
 
+#
+# Build the clock face.
+#
+
 # (1/12 of a circle)
 deltaR = 2 * math.pi / 12
 r = 0
@@ -22,23 +26,32 @@ for i in range(12):
     T = Matrix.translation(0, 0, radius)
     R = Matrix.rotation_y(r)
     position = R * T * origin
+    
     #
-    # Screen to canvas(raster) coordinates a hack.
+    # Translate and scale to Canvas coords.
+    # These transform matrices should be calculated outside
+    # of this loop.
     #
-    # Translate, scale and clip to Canvas coords.
+    Translate = Matrix.translation(0.5, 1.0, 0.5)
+    Scale = Matrix.scaling(width - 1, 1, height - 1)
+    position = Scale * Translate * position
+    
     #
-    x = position[0] + 0.5
-    z = position[2] + 0.5
-    row = round(x * (width - 1))
+    # Round and clip to Canvas coordinates.
+    #
+    row = round(position[0])
     if row < 0:
         row = 0
-    col = round(z * (height - 1))
+    if row > width - 1:
+        row = width - 1
+
+    col = round(position[2])
     if col < 0:
         col = 0
+    if col > height - 1:
+        col = height -1
+    
     canvas.write_pixel(row, col, pen)
-
-    #print(f'Angle = {r}, x = {x}, z = {z}')
-    print(f'row = {row}, col = {col}')
     r += deltaR
 
 canvas.canvas_to_ppm()
