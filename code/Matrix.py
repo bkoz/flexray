@@ -24,7 +24,7 @@ class Matrix(np.ndarray):
         s = np.array(self)
         o = np.array(other)
         for i,j in zip(s.flatten(), o.flatten()):
-            l.append(math.isclose(i, j, rel_tol=1e-4))
+            l.append(math.isclose(i, j, rel_tol=1e-4, abs_tol=0.000001))
         ret = (True in l) and (False not in l)
         return ret
 
@@ -72,4 +72,43 @@ class Matrix(np.ndarray):
 
     def inverse(self):
         return Matrix(np.linalg.inv(self))
+    
+    def translation(x, y, z):
+        t = Matrix.identity()
+        t[0][3] = x
+        t[1][3] = y
+        t[2][3] = z
+        return t
+    
+    def scaling(x, y, z):
+        t = Matrix.identity()
+        t[0][0] = x
+        t[1][1] = y
+        t[2][2] = z
+        return t
+    
+    def rotation_x(r):
+        t = Matrix.identity()
+        t[1][1] = math.cos(r)
+        t[1][2] = -math.sin(r)
+        t[2][1] = math.sin(r)
+        t[2][2] = math.cos(r)
+        return t
+    
+    def rotation_y(r):
+        t = Matrix.identity()
+        t[0][0] = math.cos(r)
+        t[0][2] = math.sin(r)
+        t[2][0] = -math.sin(r)
+        t[2][2] = math.cos(r)
+        return t
+
+    def rotation_z(r):
+        t = Matrix.identity()
+        t[0][0] = math.cos(r)
+        t[0][1] = -math.sin(r)
+        t[1][0] = math.sin(r)
+        t[1][1] = math.cos(r)
+        return t
+    
 
