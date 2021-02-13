@@ -6,11 +6,8 @@ from Matrix import *
 from Point import *
 
 p = Point([1, 0, 1])
-
 A = Matrix.rotation_x(math.pi / 2)
-
 B = Matrix.scaling(5, 5, 5)
-
 C = Matrix.translation(10, 5, 7)
 
 p2 = A * p
