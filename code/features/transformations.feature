@@ -127,6 +127,7 @@ Scenario: Individual transformations are applied in sequence
   When p4 ← C * p3
   Then p4 = point(15, 0, 7)
 
+@dev
 Scenario: Chained transformations must be applied in reverse order
   Given p ← point(1, 0, 1)
     And A ← rotation_x(π / 2)

@@ -189,4 +189,11 @@ def step_impl(context):
 def step_impl(context):
     assert(context.p4 == Point([15, 0, 7]))
 
+@when(u'T ← C * B * A')
+def step_impl(context):
+    context.T = context.C * context.B * context.A
+@then(u'T * p = point(15, 0, 7)')
+def step_impl(context):
+    assert(context.T * context.p == Point([15, 0, 7]))
+
 
