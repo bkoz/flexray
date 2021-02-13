@@ -111,4 +111,13 @@ class Matrix(np.ndarray):
         t[1][1] = math.cos(r)
         return t
     
-
+    def shearing(xy, xz, yx, yz, zx, zy):
+        t = Matrix.identity()
+        t[0][1] = xy
+        t[0][2] = xz
+        t[1][0] = yx
+        t[1][2] = yz
+        t[2][0] = zx
+        t[2][1] = zy
+        return t
+    

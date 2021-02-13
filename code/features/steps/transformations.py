@@ -115,3 +115,45 @@ def step_impl(context):
 @then(u'full_quarter * p = point(-1, 0, 0)')
 def step_impl(context):
     assert(context.full_quarter * context.p == Point([-1, 0, 0]))
+
+@given(u'transform ← shearing(1, 0, 0, 0, 0, 0)')
+def step_impl(context):
+    context.t = Matrix.shearing(1, 0, 0, 0, 0, 0)
+@then(u'transform * p = point(5, 3, 4)')
+def step_impl(context):
+    assert(context.t * context.p == Point([5, 3, 4]))
+
+@given(u'transform ← shearing(0, 1, 0, 0, 0, 0)')
+def step_impl(context):
+    context.t = Matrix.shearing(0, 1, 0, 0, 0, 0)
+@then(u'transform * p = point(6, 3, 4)')
+def step_impl(context):
+    assert(context.t * context.p == Point([6, 3, 4]))
+
+@given(u'transform ← shearing(0, 0, 1, 0, 0, 0)')
+def step_impl(context):
+    context.t = Matrix.shearing(0, 0, 1, 0, 0, 0)
+@then(u'transform * p = point(2, 5, 4)')
+def step_impl(context):
+        assert(context.t * context.p == Point([2, 5, 4]))
+
+@given(u'transform ← shearing(0, 0, 0, 1, 0, 0)')
+def step_impl(context):
+    context.t = Matrix.shearing(0, 0, 0, 1, 0, 0)
+@then(u'transform * p = point(2, 7, 4)')
+def step_impl(context):
+    assert(context.t * context.p == Point([2, 7, 4]))
+
+@given(u'transform ← shearing(0, 0, 0, 0, 1, 0)')
+def step_impl(context):
+    context.t = Matrix.shearing(0, 0, 0, 0, 1, 0)
+@then(u'transform * p = point(2, 3, 6)')
+def step_impl(context):
+    assert(context.t * context.p == Point([2, 3, 6]))
+
+@given(u'transform ← shearing(0, 0, 0, 0, 0, 1)')
+def step_impl(context):
+    context.t = Matrix.shearing(0, 0, 0, 0, 0, 1)
+@then(u'transform * p = point(2, 3, 7)')
+def step_impl(context):
+    assert(context.t * context.p == Point([2, 3, 7]))
