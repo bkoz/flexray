@@ -10,8 +10,8 @@ from Color import *
 # Canvas
 width = 500
 height = 500
-radius = 1
-canvas = Canvas(2*width, 2*height)
+radius = 0.5
+canvas = Canvas(width, height)
 pen = Color(1, 1 ,1)
 
 # (1/12 of a circle)
@@ -27,18 +27,18 @@ for i in range(12):
     # Need a transform for this.
     # Should not have to clamp row and col values.
     #
-    row = round(width * position[0]) + width - 1
+    x = position[0] + 0.5
+    z = position[2] + 0.5
+    row = round(x * (width - 1))
     if row < 0:
         row = 0
-    col = round(height * position[2]) + height - 1
+    col = round(z * (height - 1))
     if col < 0:
         col = 0
     canvas.write_pixel(row, col, pen)
 
-    print(f'Angle = {r}, x = {position[0]}, z = {position[2]}')
-    #print(f'row = {row}, col = {col}')
+    #print(f'Angle = {r}, x = {x}, z = {z}')
+    print(f'row = {row}, col = {col}')
     r += deltaR
-
-
 
 canvas.canvas_to_ppm()
