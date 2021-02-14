@@ -1,5 +1,6 @@
 Feature: Rays
 
+@dev
 Scenario: Creating and querying a ray
   Given origin ← point(1, 2, 3)
     And direction ← vector(4, 5, 6)
@@ -7,6 +8,7 @@ Scenario: Creating and querying a ray
   Then r.origin = origin
     And r.direction = direction
 
+@dev
 Scenario: Computing a point from a distance
   Given r ← ray(point(2, 3, 4), vector(1, 0, 0))
   Then position(r, 0) = point(2, 3, 4)
