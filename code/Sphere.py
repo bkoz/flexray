@@ -6,7 +6,6 @@ from Intersection import *
 
 class Sphere(Primitive):
     def __init__(self):
-        print("Sphere constructor")
         self.radius = 1
         super().__init__()
 
