@@ -10,10 +10,12 @@ from Sphere import *
 import os
 from multiprocessing import Pool
 import time
+import argparse
 
-print(f'{os.cpu_count()} logical threads available')
-# Canvas
-canvas_pixels = 500
+print(f'logical threads available = {os.cpu_count()}')
+
+# Globals
+canvas_pixels = 100
 canvas = Canvas(canvas_pixels, canvas_pixels)
 color = Color(1, 0, 0)
 ray_origin = Point([0, 0, -5])
@@ -46,7 +48,6 @@ def write_pixels(width, height, pixels):
 def render(n):
     print(f'render(): start = {n[0]}, stop = {n[1]}')
     pixels = []
-    count = 0
     t0 = time.time()
     for y in range(n[0], n[1]):
         world_y = half - pixel_size * y
@@ -55,20 +56,27 @@ def render(n):
             position = Point([world_x, world_y, wall_z])
             r = Ray(ray_origin, normalize(position - ray_origin))
             xs = shape.intersect(r)
-            count += 1
             if (xs):
                 pixels.append([255, 0, 0])
                 # canvas.write_pixel(x, y, Color(1, 0, 0))
             else:
                 pixels.append([0, 0, 0])
 
-    print(f'elapsed thread time = {time.time() - t0}, count = {count}')
+    print(f'Elapsed thread time = {time.time() - t0} seconds.')
     print(f'finished render(): start = {n[0]}, stop = {n[1]}')
     return pixels
 
 def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument("-s", "--size", help="default = 100", default=100)
+    parser.add_argument("-t", "--threads", help="default = 1", default=1)
+    args = parser.parse_args()
 
-    num_threads = 1
+    canvas_pixels = int(args.size)
+    num_threads = int(args.threads)
+    print(f'canvas = {canvas_pixels}x{canvas_pixels}, threads = {num_threads}')
+
+    num_threads = int(args.threads)
     l = []
     chunk = canvas_pixels // num_threads
     for i in range(num_threads):
@@ -76,14 +84,13 @@ def main():
         end = start + chunk
         l.append([start, end])   
     
-    print(f'Running with {num_threads} threads.')
-    p = Pool(num_threads)
+    p = Pool(processes=num_threads)
     t0 = time.time()
     pixels = p.map(render, l, chunksize=1)
     p.close()
     p.join()
 
-    print(f'elapsed = {time.time() - t0}')
+    print(f'Total elapsed time = {time.time() - t0} seconds')
 
     # print(f'map output: pixels = {pixels}')
     write_pixels(canvas_pixels, canvas_pixels, pixels)
