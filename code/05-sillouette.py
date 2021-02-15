@@ -68,7 +68,7 @@ def render(n):
 
 def main():
 
-    num_threads = 4
+    num_threads = 1
     l = []
     chunk = canvas_pixels // num_threads
     for i in range(num_threads):
