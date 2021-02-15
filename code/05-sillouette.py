@@ -46,7 +46,7 @@ def write_pixels(width, height, pixels):
         f.close()
 
 def render(n):
-    print(f'render(): start = {n[0]}, stop = {n[1]}')
+    print(f'render(): thread [{n[0]}, {n[1]}]')
     pixels = []
     t0 = time.time()
     for y in range(n[0], n[1]):
@@ -62,8 +62,7 @@ def render(n):
             else:
                 pixels.append([0, 0, 0])
 
-    print(f'Elapsed thread time = {time.time() - t0} seconds.')
-    print(f'finished render(): start = {n[0]}, stop = {n[1]}')
+    print(f'render(): thread [{n[0]}, {n[1]}], elapsed time = {time.time() - t0:.3f} seconds.')
     return pixels
 
 def main():
@@ -90,7 +89,7 @@ def main():
     p.close()
     p.join()
 
-    print(f'Total elapsed time = {time.time() - t0} seconds')
+    print(f'Total elapsed time = {time.time() - t0:0.3f} seconds')
 
     # print(f'map output: pixels = {pixels}')
     write_pixels(canvas_pixels, canvas_pixels, pixels)
