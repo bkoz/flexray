@@ -15,7 +15,7 @@ import argparse
 print(f'logical threads available = {os.cpu_count()}')
 
 # Globals
-canvas_pixels = 100
+canvas_pixels = 1000
 canvas = Canvas(canvas_pixels, canvas_pixels)
 color = Color(1, 0, 0)
 ray_origin = Point([0, 0, -5])
@@ -46,7 +46,7 @@ def write_pixels(width, height, pixels):
         f.close()
 
 def render(n):
-    print(f'render(): thread [{n[0]}, {n[1]}]')
+    print(f'render(): pid = {os.getpid()}, thread [{n[0]}, {n[1]}]')
     pixels = []
     t0 = time.time()
     for y in range(n[0], n[1]):
@@ -62,12 +62,12 @@ def render(n):
             else:
                 pixels.append([0, 0, 0])
 
-    print(f'render(): thread [{n[0]}, {n[1]}], elapsed time = {time.time() - t0:.3f} seconds.')
+    print(f'render(): thread [{n[0]}, {n[1]}] finished, elapsed time = {time.time() - t0:.3f} seconds.')
     return pixels
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("-s", "--size", help="default = 100", default=100)
+    parser.add_argument("-s", "--size", help="default = 1000", default=1000)
     parser.add_argument("-t", "--threads", help="default = 1", default=1)
     args = parser.parse_args()
 
