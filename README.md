@@ -1,5 +1,5 @@
 # flexray
-A Whitted-style ray tracer implementation in python named after my dad, Felix. The code is based on Jami's Buck's excellent book [The Ray Tracer Challenge](https://pragprog.com/titles/jbtracer/the-ray-tracer-challenge/).
+A Whitted-style ray tracer implementation in python named after my dad, Felix. The code is based on Jami Buck's excellent book [The Ray Tracer Challenge](https://pragprog.com/titles/jbtracer/the-ray-tracer-challenge/).
 
 ### Behavior Driven Development
 
@@ -22,7 +22,7 @@ $ python
 >>> print(sys.path)
 ```
 
-#### Platforms
+#### Testing platforms
 
 c4.8xlarge (36 cpus)
 
