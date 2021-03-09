@@ -21,3 +21,8 @@ $ python
 >>> import sys
 >>> print(sys.path)
 ```
+
+#### Platforms
+
+c4.8xlarge (36 cpus)
+

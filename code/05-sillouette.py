@@ -80,7 +80,15 @@ def main():
     chunk = canvas_pixels // num_threads
     for i in range(num_threads):
         start = i * chunk
-        end = start + chunk
+        #
+        # The last thread works on any remaining scan lines.
+        # This handles the special case when chunk does not divide evenly.
+        #
+        if (i == num_threads - 1):
+            end = canvas_pixels
+        else:
+            end = start + chunk
+        
         l.append([start, end])   
     
     p = Pool(processes=num_threads)
