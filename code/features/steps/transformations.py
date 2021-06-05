@@ -196,4 +196,18 @@ def step_impl(context):
 def step_impl(context):
     assert(context.T * context.p == Point([15, 0, 7]))
 
-
+@given(u'from ← point(0, 0, 0)')
+def step_impl(context):
+    context.fromP = Point(0, 0, 0)
+@given(u'to ← point(0, 0, -1)')
+def step_impl(context):
+    context.to = Point(0, 0, -1) 
+@given(u'up ← vector(0, 1, 0)')
+def step_impl(context):
+    context.up = Point(0, 1, 0)
+@when(u't ← view_transform(from, to, up)')
+def step_impl(context):
+    context.t = Matrix.view_transform(context.fromP, context.to, context.up)
+@then(u't = identity_matrix')
+def step_impl(context):
+    assert(context.t == Matrix.identity())

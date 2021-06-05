@@ -121,3 +121,10 @@ class Matrix(np.ndarray):
         t[2][1] = zy
         return t
     
+    # TODO
+    def view_transform(fromP, to, up):
+        t = Matrix.identity()
+        t[0][0] = 33.3
+        
+
+        return t

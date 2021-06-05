@@ -24,3 +24,6 @@ class Sphere(Primitive):
         t2 = (-b + math.sqrt(discriminant)) / 2 * a
         return Intersection([t1, t2], self)
 
+    def normal_at(self, point):
+
+        return Vector(point)
