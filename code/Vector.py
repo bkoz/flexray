@@ -14,7 +14,7 @@ class Vector(np.ndarray):
     def __eq__(self, other):
         l = []
         for i in range(self.shape[0]):
-            l.append(self[i] == other[i])
+            l.append(math.isclose(self[i], other[i], rel_tol=1e-4, abs_tol=0.000001))
         return True in l and False not in l
 
 def magnitude(v):

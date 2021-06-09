@@ -3,6 +3,7 @@ from Point import *
 from Ray import *
 from Vector import *
 from Intersection import *
+from Matrix import *
 
 class Sphere(Primitive):
     def __init__(self):
@@ -24,6 +25,12 @@ class Sphere(Primitive):
         t2 = (-b + math.sqrt(discriminant)) / 2 * a
         return Intersection([t1, t2], self)
 
-    def normal_at(self, point):
-
-        return Vector(point)
+    def normal_at(self, world_point):
+        object_point = self.getTransform().inverse() * world_point
+        object_normal = object_point - Point(0, 0, 0)
+        #world_normal = transpose(inverse(sphere.transform)) * object_normal
+        xform = self.getTransform()
+        world_normal = Matrix.transpose(xform.inverse()) * object_normal
+        world_normal.w = 0
+        print(f'world_normal = {normalize(world_normal)}')
+        return normalize(world_normal)

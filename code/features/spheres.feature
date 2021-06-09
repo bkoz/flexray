@@ -96,11 +96,13 @@ Scenario: The normal on a sphere at a nonaxial point
   When n ← normal_at(s, point(√3/3, √3/3, √3/3))
   Then n = vector(√3/3, √3/3, √3/3)
 
+@dev
 Scenario: The normal is a normalized vector
   Given s ← sphere()
   When n ← normal_at(s, point(√3/3, √3/3, √3/3))
   Then n = normalize(n)
 
+@dev
 Scenario: Computing the normal on a translated sphere
   Given s ← sphere()
     And set_transform(s, translation(0, 1, 0))
