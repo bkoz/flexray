@@ -4,10 +4,12 @@ from Ray import *
 from Vector import *
 from Intersection import *
 from Matrix import *
+from Material import Material
 
 class Sphere(Primitive):
     def __init__(self):
         self.radius = 1
+        self.material = Material()
         super().__init__()
 
     def __str__(self):
@@ -32,5 +34,4 @@ class Sphere(Primitive):
         xform = self.getTransform()
         world_normal = Matrix.transpose(xform.inverse()) * object_normal
         world_normal.w = 0
-        print(f'world_normal = {normalize(world_normal)}')
         return normalize(world_normal)
