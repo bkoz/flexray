@@ -181,3 +181,26 @@ def step_impl(context):
 @then(u'cross(b, a) = vector(1, -2, 1)')
 def step_impl(context):
     assert(cross(context.b, context.a) == Vector([1, -2, 1]))
+
+@given(u'v ← vector(1, -1, 0)')
+def step_impl(context):
+    context.v = Vector(1, -1, 0)
+@given(u'n ← vector(0, 1, 0)')
+def step_impl(context):
+    context.n = Vector(0, 1, 0)
+@when(u'r ← reflect(v, n)')
+def step_impl(context):
+    context.r = Tuple.reflect(context.v, context.n)
+@then(u'r = vector(1, 1, 0)')
+def step_impl(context):
+    assert context.r == Vector(1, 1, 0)
+
+@given(u'v ← vector(0, -1, 0)')
+def step_impl(context):
+    context.v = Vector(0, -1, 0)
+@given(u'n ← vector(√2/2, √2/2, 0)')
+def step_impl(context):
+    context.n = Vector(math.sqrt(2)/2, math.sqrt(2)/2, 0)
+@then(u'r = vector(1, 0, 0)')
+def step_impl(context):
+    assert context.r == Vector(1, 0, 0)
