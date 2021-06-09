@@ -64,3 +64,23 @@ def step_impl(context):
 @then(u'n = vector(0, 0.97014, -0.24254)')
 def step_impl(context):
     assert context.n == Vector(0, 0.97014, -0.24254)
+
+@when(u'm ← s.material')
+def step_impl(context):
+    context.m = context.s.getMaterial()
+@then(u'm = material()')
+def step_impl(context):
+    assert context.m == Material()
+
+@given(u'm ← material()')
+def step_impl(context):
+    context.m = Material()
+@given(u'm.ambient ← 1')
+def step_impl(context):
+    context.m.setAmbient(1)
+@when(u's.material ← m')
+def step_impl(context):
+    context.s.setMaterial(context.m)
+@then(u's.material = m')
+def step_impl(context):
+    assert context.s.material == context.m

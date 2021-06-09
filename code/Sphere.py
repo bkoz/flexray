@@ -35,3 +35,9 @@ class Sphere(Primitive):
         world_normal = Matrix.transpose(xform.inverse()) * object_normal
         world_normal.w = 0
         return normalize(world_normal)
+    
+    def setMaterial(self, m):
+        self.material = m
+
+    def getMaterial(self):
+        return self.material
