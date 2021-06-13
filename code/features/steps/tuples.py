@@ -1,5 +1,5 @@
 from behave import *
-from Tuple import Tuple
+from Tuple import *
 from Point import Point
 from Vector import *
 import math
@@ -190,7 +190,7 @@ def step_impl(context):
     context.n = Vector(0, 1, 0)
 @when(u'r ← reflect(v, n)')
 def step_impl(context):
-    context.r = Tuple.reflect(context.v, context.n)
+    context.r = reflect(context.v, context.n)
 @then(u'r = vector(1, 1, 0)')
 def step_impl(context):
     assert context.r == Vector(1, 1, 0)

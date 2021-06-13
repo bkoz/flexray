@@ -37,9 +37,9 @@ class Color:
         return Color(-self.red, -self.green, -self.blue)
 
     def __eq__(self, other):
-        return math.isclose(self.red, other.red) \
-            and math.isclose(self.green, other.green) \
-                and math.isclose(self.blue, other.blue)
+        return math.isclose(self.red, other.red, rel_tol=1e-4, abs_tol=0.000001) \
+            and math.isclose(self.green, other.green, rel_tol=1e-4, abs_tol=0.000001) \
+                and math.isclose(self.blue, other.blue, rel_tol=1e-4, abs_tol=0.000001)
 
     def scale(self, scalar):
         r = self.red * scalar

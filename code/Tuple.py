@@ -22,6 +22,6 @@ class Tuple(np.ndarray):
     def isaVector(self):
         return self[3] == 0.0
     
-    def reflect(vec, normal):
-        return vec - normal * 2 * Vector.dot(vec, normal)
+def reflect(vec, normal):
+    return vec - normal * 2 * Vector.dot(vec, normal)
 
